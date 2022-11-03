@@ -1,5 +1,10 @@
 from django.contrib import admin
-from .models import Item, OrderItem, Order
+from .models import Category, Item, OrderItem, Order
+
+
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    pass
 
 
 @admin.register(Item)

@@ -8,8 +8,44 @@
 <!--Main layout-->
 <main>
   <div class="container mt-5 pt-5">
+    <div class="row justify-content-center mb-2">
+      <div class='col-12'>
+        <form>
+          <div class='row justify-content-center g-0'>
+            <div class='col-8'>
+              <!-- Email input -->
+              <div class="form-outline" >
+                <input style='border: 1.2px solid teal; border-radius: .34rem' type="search" id="search" class="form-control" placeholder='Search anything' />
+              </div>
+            </div>
+            <div class='col-2 ml-0 pl-0'>
+              <!-- Submit button -->
+              <button type="submit" style='border: 1.2px solid teal; border-radius: .34rem; padding: .34rem; background-color:#808080' class=' pl-3 pr-3'>Search</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="row justify-content-center pt-4 pb-5">
+      {% for category in categories %}
+        <div class="col-md-4 col-6 col-lg-3 mb-3">
+          <a href="" style='text-decoration: none; color: #555;'>
+            <div class="card shadow-sm justify-content-center h-100" style='border: 1.2px solid teal; border-radius: .34rem;'>
+              <div class="card-body mt-2 mb-1 text-center">
+                <p>{{category.category_en}}</p>
+                <hr class='teal'/>
+                <p>{{category.category_bn}}</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+      
+      
+    </div>
+    
 
-    <!--Navbar-->
+    {% comment %} <!--Navbar-->
     <nav class="navbar navbar-expand-lg navbar-light mt-3 mb-5">
 
       <!-- Navbar brand -->
@@ -57,7 +93,7 @@
       <!-- Collapsible content -->
 
     </nav>
-    <!--/.Navbar-->
+    <!--/.Navbar--> {% endcomment %}
 
     <!--Section: Products v.3-->
     <section class="text-center mb-4">

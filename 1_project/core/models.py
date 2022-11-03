@@ -1,28 +1,28 @@
 from django.db import models
 from django.conf import settings
-
-CATEGORY_CHOICES = (
-    ('S', 'Shirt'),
-    ('SW', 'Sport Wear'),
-    ('OW', 'Out Wear')
-)
+from django.contrib.auth import get_user_model
 
 
-LABEL_CHOICES = (
-    ('P', 'primary'),
-    ('S', 'Secondary'),
-    ('D', 'Danger')
-)
 
 class Category(models.Model):
-    pass
+    category_creator     = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    category_en          = models.CharField(max_length=34, default='-')
+    category_bn          = models.CharField(max_length=34, default='-')
+    category_description = models.TextField(null=True, blank=True)
+    photo                = models.ImageField(upload_to='img/category/', null=True, blank=True)
+
+    class Meta:
+        verbose_name_plural = 'Categories'
+
+    def __str__(self):
+        return self.category_en
 
 
 class Item(models.Model):
+    photo                = models.ImageField(upload_to='img/products/', null=True, blank=True)
     title = models.CharField(max_length=100)
     price = models.FloatField()
-    category = models.CharField(choices=CATEGORY_CHOICES, max_length=2, default='S')
-    label = models.CharField(choices=LABEL_CHOICES, max_length=2, default='S')
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
